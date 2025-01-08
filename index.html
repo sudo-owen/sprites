@@ -1,139 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    <title>Design Doc</title>
-</head>
-<body>
-    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const toggleButtons = document.querySelectorAll(".toggle-btn");
+        toggleButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const refsDiv = this.parentElement.nextElementSibling;
+            if (refsDiv.style.display === "none") {
+              refsDiv.style.display = "block";
+              this.textContent = "Hide";
+            } else {
+              refsDiv.style.display = "none";
+              this.textContent = "Show";
+            }
+          });
+        });
+      });
+    </script>
+
+    <title>Game Design Doc</title>
+  </head>
+  <body>
+    <h1>monchain</h1>
+    <div>
+        monchain is a onchain monster battling pvp game. players battle 1v1 with teams of mons in real-time. monchain is designed to bring multiple web3 communities together and showcase the power of extensibility of the EVM. under the hood, monchain is powered by <a href="https://github.com/sudoswap/chomp" target="_blank">CHOMP</a>, a flexible battle engine that can support a wide variety of custom moves, effects, and mons.
+    </div>
+
+    <h1>game philosophy</h1>
+    <div>
+        though it obviously borrows a lot from pokemon, there are several distinct design choices for monchain:
+        <ul>
+            <li>focus on pvp over pve. this has several downstream consequences:
+                <ul>
+                    <li>no grinding or leveling is planned to start, nor will there be an extensive single player compaign.</li>
+                    <li>mons will be balanced periodically in an effort to keep the meta interesting. mons will not be tokenized to start.</li>
+                </ul>
+            </li>
+            <li>
+                mons as champs ala MOBAs vs mons with slottable moves:
+                <ul>
+                    <li>more unique movesets / abilities</li>
+                    <li>elemental typings are the high-level way to have counterplay</li>
+                    <li>less mons, ideally make mons feel mechanically more unique</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <h1>gameplay</h1>
+    <div>
+        both player take turns making moves. moves get executed, state advances. your mon might die. continue until all mons for one side are dead. you know the drill.
+    </div>
+
     <h1>Sprites Design Doc</h1>
 
     <h2>1) Gorillax</h2>
-    <h3>Current Sprite</h3>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="bayc/front.png">
+      <img src="myk31/bayc/front.gif" />
+      <img src="myk31/bayc/rear.gif" />
+      <img src="_BurakoIRL_/gorillax_golden.png" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Sun Wukong influences, more primal</li>
-            <li>Large gorilla vibes</li>
-            <li>Focus on more ferocious jaws</li>
-        </ul>
+      BAYC. Probably need to feed in some general story about how they are easily scammed but are a
+      powerful force. Brawns over brain dynamic.
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="bayc/ambipom.png">
-        <img src="bayc/infernape.png">
-        <img src="bayc/mankey.png">
-        <img src="bayc/simisage.png">
+      <ul>
+        <li>
+          Hits hard but slow, some sort of reckless status effect (e.g. being
+          locked in, or eschewing secondary effects for more damage) is a nice
+          mechanic...
+        </li>
+        <li>Physical attack / health focus</li>
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="bayc/ambipom.png" />
+      <img src="bayc/infernape.png" />
+      <img src="bayc/mankey.png" />
+      <img src="bayc/simisage.png" />
     </div>
 
-    <hr>
+    <hr />
 
     <h2>2) Ghouliath</h2>
-    <h3>Current Sprite</h3>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="ghouls/front.png">
+      <img src="myk31/ghouls/front.gif" />
+      <img src="myk31/ghouls/rear.gif" />
+      <img src="_BurakoIRL_/ghouliath.png" />
+      <img src="_BurakoIRL_/ghouliath_wither.png" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Ghouls, undead, some magic</li>
-            <li>Magic ghost fire skull</li>
-        </ul>
+        Based Ghouls. Focus on their proliferation (lots of derivatives), grassroots support, and early to being based.
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="ghouls/duskull.png">
-        <img src="ghouls/dusclops.png">
-        <img src="ghouls/mismagius.png">
+      <ul>
+        <li>Mechanic based around resurrection, e.g. can come back once per game.</li>
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="ghouls/duskull.png" />
+      <img src="ghouls/dusclops.png" />
+      <img src="ghouls/mismagius.png" />
     </div>
 
-    <hr>
+    <hr />
 
     <h2>3) Inutia</h2>
-    <h3>Current Sprite</h3>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="jennie/front.png">
+      <img src="myk31/jennie/front.gif" />
+      <img src="myk31/jennie/rear.gif" />
+      <img src="_BurakoIRL_/inutia.png" />
+      <img src="_BurakoIRL_/inutia_portal.png" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Magic dog, uses portals</li>
-            <li>Tail can be changed, more of a placeholder</li>
-            <li>Focus on magic x space x portals feel</li>
-        </ul>
+        Initia. Focus on specialization/appchains, some story about crossing lots of chains (fast bridging etc.)
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="jennie/herdier.png">
-        <img src="jennie/houndour.png">
-        <img src="jennie/growlithe.png">
-        <img src="jennie/shinx.png">
+      <ul>
+        <li>Maybe a way to warp the battlefield or set up global effects</li>
+        <li>Some sort of VIP based way to split bonuses w/ other party members would also be pretty cool</li>
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="jennie/herdier.png" />
+      <img src="jennie/houndour.png" />
+      <img src="jennie/growlithe.png" />
+      <img src="jennie/shinx.png" />
     </div>
 
-    <hr>
+    <hr />
 
     <h2>4) Pengym</h2>
-    <h3>Current Sprite</h3>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="pudgy/front.png">
+      <img src="myk31/pudgy/front.gif" />
+      <img src="myk31/pudgy/rear.gif" />
+      <img src="_BurakoIRL_/pengym.png" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Buff pengun</li>
-            <li>Cute but stronk</li>
-        </ul>
+        Pudgy Penguin. Focus on abs, culture, maybe their high degree of normie penetration.
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="pudgy/empoleon.png">
-        <img src="pudgy/piplup.png">
-        <img src="pudgy/machamp.png">
+      <ul>
+        <li>Can reference the coin, or abstract (the chain), or need to find some other angle to show their dominance.</li>
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="pudgy/empoleon.png" />
+      <img src="pudgy/piplup.png" />
+      <img src="pudgy/machamp.png" />
     </div>
 
-    <hr>
+    <hr />
 
     <h2>5) Yesman</h2>
-    <h3>Current Sprite</h3>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="yesman/front.png">
+      <img src="myk31/yesman/front.gif" />
+      <img src="myk31/yesman/rear.gif" />
+      <img src="_BurakoIRL_/yesman.png" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Magic smiley face ghost</li>
-            <li>Mysterious with a smiley face, kind of like anonymous</li>
-            <li>Pose can be changed</li>
-        </ul>
+        Baseline (YES). Already a large body of internal lore can borrow from. High-level can cast the various protocols as clans/areas.
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="yesman/banette.png">
-        <img src="yesman/cofagrigus.png">
-        <img src="yesman/yes-1.jpg">
-        <img src="yesman/yes-2.jpg">
+      <ul>
+        <li>Obviously focusing on fixed ratios, looping, etc. (E.g. a move that gets stronger each time you use it, inability to fall below X% when Y event happens, etc.)</li>
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="yesman/banette.png" />
+      <img src="yesman/cofagrigus.png" />
+      <img src="yesman/yes-1.jpg" />
+      <img src="yesman/yes-2.jpg" />
+    </div>
+
+    <hr />
+
+    <h2>6) Sofabbit</h2>
+    <h3>WIP Sprites</h3>
+    <div>
+      <img src="myk31/sofamon/front.gif" />
+      <img src="myk31/sofamon/rear.gif" />
+      <img src="_BurakoIRL_/sofabbit.png" />
+    </div>
+    <h3>Lore</h3>
+    <div>
+        Sofamon. Also some existing lore to draw from. Multiple wearable collabs.
+    </div>
+    <h3>Gameplay</h3>
+    <div>
+      <ul>
+        <li>Focus on RNG aspect and clothing aspect. Clothes can either change up stats/bonuses, RNG can be either to stamina or damage.
+      </ul>
+    </div>
+    <h3>Pokemon References <button class="toggle-btn">Show</button></h3>
+    <div style="display: none;">
+      <img src="sofamon/azumarill.png" />
+      <img src="sofamon/buneary.png" />
+      <img src="sofamon/lopunny.png" />
+      <img src="sofamon/marowak.png" />
     </div>
 
     <hr>
 
-    <h2>6) Sofabbit</h2>
-    <h3>Current Sprite</h3>
+    <h2>7) Malalien</h2>
+    <h3>WIP Sprites</h3>
     <div>
-        <img src="sofamon/front.png">
+      <img src="milady/front.gif" />
+      <img src="milady/back.gif" />
+      <img src="milady/mini.gif" />
     </div>
+    <h3>Lore</h3>
     <div>
-        <ul>
-            <li>Vibes: Big friendly/fluffy rabbit</li>
-            <li>Maybe add a carrot in as a weapon somehow...</li>
-        </ul>
+        Milady.
     </div>
-    <h2>Pokemon References</h2>
+    <h3>Gameplay</h3>
     <div>
-        <img src="sofamon/azumarill.png">
-        <img src="sofamon/buneary.png">
-        <img src="sofamon/lopunny.png">
-        <img src="sofamon/marowak.png">
+      <ul>
+        <li>Focus on hacking aspect, maybe a custom status effect (h4x0r).</li>
+      </ul>
     </div>
 
-</body>
+  </body>
 </html>
